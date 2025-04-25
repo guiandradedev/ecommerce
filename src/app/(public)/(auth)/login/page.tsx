@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import { z } from "zod";
@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
+import GoogleAuth from "../google-auth";
 
 // Validação com Zod
 const loginSchema = z.object({
@@ -31,7 +32,7 @@ export default function LogIn() {
     return (
         <div className="flex flex-col md:flex-row items-center justify-center">
             {/* Hero Section */}
-            <div className="flex-1 flex items-center justify-center py-8">
+            <div className="hidden md:flex flex-1 items-center justify-center py-8 px-4">
                 <Image
                     src="/login.svg"
                     alt="Login Illustration"
@@ -42,7 +43,7 @@ export default function LogIn() {
             </div>
 
             {/* Login Section */}
-            <div className="flex-1 flex flex-col items-center justify-center p-8 bg-white shadow-lg rounded-lg max-w-md">
+            <div className="flex-1 flex flex-col items-center justify-center p-8 bg-white shadow-lg rounded-lg w-full md:max-w-md">
                 <h1 className="text-2xl font-bold text-gray-800 mb-6">Acesse sua conta</h1>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
@@ -99,16 +100,7 @@ export default function LogIn() {
 
                 {/* Google Login */}
                 <div className="w-full mt-6">
-                    <Button variant="outline" className="w-full flex items-center justify-center">
-                        <Image
-                            src="/google-icon.svg"
-                            alt="Google Icon"
-                            width={20}
-                            height={20}
-                            className="mr-2"
-                        />
-                        Acessar com Google
-                    </Button>
+                    <GoogleAuth />
                 </div>
 
                 {/* Register Link */}
