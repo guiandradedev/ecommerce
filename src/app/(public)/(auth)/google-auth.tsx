@@ -24,7 +24,7 @@ export default function GoogleAuth() {
             // localStorage.setItem("refresh_token", response.data.data.token);
             console.log("Login bem-sucedido!", response.data);
         } catch (error) {
-            console.error("Erro ao fazer login:", (error as any).response?.data || error);
+            console.error("Erro ao fazer login:", error);
         }
     };
 
