@@ -106,7 +106,7 @@ export default function LogIn() {
                 {/* Register Link */}
                 <p className="mt-4 text-sm text-gray-600">
                     Não tem uma conta?{" "}
-                    <a href="/register" className="text-indigo-600 hover:underline">
+                    <a href="/signup" className="text-indigo-600 hover:underline">
                         Cadastre-se
                     </a>
                 </p>
