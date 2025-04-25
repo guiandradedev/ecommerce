@@ -1,4 +1,5 @@
-import { NavbarLink } from "./types";
+import { NavbarAction, NavbarLink } from "./types";
+import { ShoppingCartIcon, HeartIcon, QuestionMarkCircleIcon } from '@heroicons/react/24/solid'
 
 export const navbar_links: NavbarLink[] = [
     {
@@ -35,5 +36,29 @@ export const navbar_links: NavbarLink[] = [
     {
         label: "Blog",
         href: "/blog"
+    }
+]
+
+export const navbar_actions: NavbarAction[] = [
+    {
+        label: "Suporte", //alt text if necessary
+        icon: QuestionMarkCircleIcon,
+        href: "/support",
+    },
+    {
+        label: "Favoritos", //alt text if necessary
+        icon: HeartIcon,
+        href: "/favorites",
+        badge: {
+            count: 1
+        }
+    },
+    {
+        label: "Carrinho", //alt text if necessary
+        icon: ShoppingCartIcon,
+        href: "/cart",
+        badge: {
+            count: 4
+        }
     }
 ]

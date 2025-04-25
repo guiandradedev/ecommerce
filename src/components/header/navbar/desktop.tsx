@@ -3,13 +3,14 @@ import { Bars3Icon, ChevronDownIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import Logo from "../../logo"
 import { navbar_links } from "../constants"
+import Actions from "./actions"
 
-interface DesktopHeaderProps {
+interface DesktopNavbarProps {
     setMobileMenuOpen: (data: boolean) => void
 }
 
 
-export default function DesktopHeader({ setMobileMenuOpen }: DesktopHeaderProps) {
+export default function DesktopNavbar({ setMobileMenuOpen }: DesktopNavbarProps) {
     return (
         <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
             <div className="flex lg:flex-1">
@@ -29,7 +30,7 @@ export default function DesktopHeader({ setMobileMenuOpen }: DesktopHeaderProps)
                 {
                     navbar_links.map((link, index) => {
                         if (!link.extends) {
-                            return <Link href="#" className="text-sm/6 font-semibold text-gray-900" key={index}>
+                            return <Link href={link.href} className="text-sm/6 font-semibold text-gray-900" key={index}>
                                 {link.label}
                             </Link>
                         } else {
@@ -46,7 +47,6 @@ export default function DesktopHeader({ setMobileMenuOpen }: DesktopHeaderProps)
                                     {link.extends.items && link.extends.items.map((item) => (
                                         <div className="p-4" key={item.label}>
                                             <div
-                                                key={item.label}
                                                 className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-50"
                                             >
                                                 {item.icon && (
@@ -92,7 +92,8 @@ export default function DesktopHeader({ setMobileMenuOpen }: DesktopHeaderProps)
                 }
 
             </PopoverGroup>
-            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-5">
+                <Actions />
                 <a href="#" className="text-sm/6 font-semibold text-gray-900">
                     Log in <span aria-hidden="true">&rarr;</span>
                 </a>

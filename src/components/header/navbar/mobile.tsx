@@ -3,13 +3,14 @@ import { XMarkIcon, ChevronDownIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import Logo from "../../logo"
 import { navbar_links } from "../constants"
+import Actions from "./actions"
 
-interface MobileHeaderProps {
+interface MobileNavbarProps {
     mobileMenuOpen: boolean,
     setMobileMenuOpen: (data: boolean)=>void
 }
 
-export default function MobileHeader({ mobileMenuOpen, setMobileMenuOpen }: MobileHeaderProps) {
+export default function MobileNavbar({ mobileMenuOpen, setMobileMenuOpen }: MobileNavbarProps) {
     return (
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-10" />
@@ -66,6 +67,7 @@ export default function MobileHeader({ mobileMenuOpen, setMobileMenuOpen }: Mobi
                 
               </div>
               <div className="py-6">
+                <Actions />
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
