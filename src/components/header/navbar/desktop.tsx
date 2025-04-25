@@ -94,8 +94,8 @@ export default function DesktopNavbar({ setMobileMenuOpen }: DesktopNavbarProps)
             </PopoverGroup>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-5">
                 <Actions />
-                <a href="#" className="text-sm/6 font-semibold text-gray-900">
-                    Log in <span aria-hidden="true">&rarr;</span>
+                <a href="/login" className="text-sm/6 font-semibold text-gray-900">
+                    Acesse sua conta <span aria-hidden="true">&rarr;</span>
                 </a>
             </div>
         </nav>

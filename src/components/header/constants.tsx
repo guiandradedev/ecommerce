@@ -50,7 +50,7 @@ export const navbar_actions: NavbarAction[] = [
         icon: HeartIcon,
         href: "/favorites",
         badge: {
-            count: 1
+            count: 0
         }
     },
     {
