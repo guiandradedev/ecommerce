@@ -53,7 +53,7 @@ export default async function Product({ params }: ProductPageProps) {
                                 )
                             }
 
-                            <ButtonAddToCart content="Adicionar ao carrinho" isActive={true} product={product}/>
+                            <ButtonAddToCart content="Adicionar ao carrinho" isActive={isActive} product={product}/>
                         </div>
                     </div>
 

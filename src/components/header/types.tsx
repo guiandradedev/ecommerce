@@ -17,6 +17,10 @@ export interface NavbarAction {
     icon: React.ElementType,
     href: string,
     badge?: {
-        count: number
+        key: string,
+        count?: number,
     }
+    // badge?: {
+    //     count: number
+    // }
 }

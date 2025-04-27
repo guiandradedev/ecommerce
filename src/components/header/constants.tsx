@@ -41,24 +41,24 @@ export const navbar_links: NavbarLink[] = [
 
 export const navbar_actions: NavbarAction[] = [
     {
-        label: "Suporte", //alt text if necessary
+        label: "Suporte",
         icon: QuestionMarkCircleIcon,
         href: "/support",
     },
     {
-        label: "Favoritos", //alt text if necessary
+        label: "Favoritos",
         icon: HeartIcon,
         href: "/favorites",
         badge: {
-            count: 0
+            key: "favoritesCount",
         }
     },
     {
-        label: "Carrinho", //alt text if necessary
+        label: "Carrinho",
         icon: ShoppingCartIcon,
         href: "/cart",
         badge: {
-            count: 4
+            key: "cartCount", 
         }
-    }
+    },
 ]
