@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+import { setCookie, parseCookies, destroyCookie } from "nookies";
 
 interface CartItem {
     id: string;
@@ -20,6 +21,27 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     const [cart, setCart] = useState<CartItem[]>([]);
+    const cookieMaxAge = 60 * 60 * 24; // 24hs
+
+    useEffect(() => {
+        const { cart: cartCookie } = parseCookies();
+        if (cartCookie) {
+            try {
+                const parsedCart = JSON.parse(cartCookie);
+                setCart(parsedCart);
+            } catch (error) {
+                console.error("Erro ao parsear o carrinho", error);
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        setCookie(null, "cart", JSON.stringify(cart), {
+            maxAge: cookieMaxAge,
+            path: "/", // routes that cookie will be avaiable
+            sameSite: "strict", 
+        });
+    }, [cart]);
 
     const addToCart = (item: CartItem) => {
         setCart((prevCart) => {
@@ -41,9 +63,9 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
     const clearCart = () => {
         setCart([]);
+        destroyCookie(null, "cart");
     };
 
-    useEffect(()=>{console.log(cart)}, [cart])
     return (
         <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
             {children}
