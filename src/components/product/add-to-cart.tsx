@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Product } from "@/constants/types";
 import { useCart } from "@/contexts/cart-context";
+import { toast } from "sonner";
 import { twMerge } from 'tailwind-merge'
 
 interface BaseButtonProps {
@@ -18,7 +19,11 @@ export default function ButtonAddToCart({ content, children, isActive, className
     const { addToCart } = useCart();
 
     const handleAddToCart = () => {
-        addToCart({ id: product.id, name: product.name, price: product.price, quantity: 1 });
+        addToCart({ id: product.id, name: product.name, price: product.price, quantity: 1, thumbnail: product.thumbnail });
+        toast.success("Produto adicionado ao carrinho", {
+            description: `${product.name} foi adicionado ao carrinho`,
+        })
+
     };
 
     return (
@@ -27,7 +32,7 @@ export default function ButtonAddToCart({ content, children, isActive, className
             disabled={!isActive}
             onClick={handleAddToCart}
         >
-             {content || children}
+            {content || children}
         </Button>
     );
 }

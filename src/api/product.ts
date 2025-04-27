@@ -1,6 +1,7 @@
 import { Product } from "@/constants/types";
 import { products } from "@/constants";
 interface IProductAPI {
+    mainProducts(): Promise<Product[]>
     getById(id: string): Promise<Product | null>
     getBySlug(slug: string): Promise<Product | null>
 }
@@ -15,5 +16,8 @@ export class ProductAPI implements IProductAPI{
         const product = products.find(prod=>prod.slug === slug)
         if(!product) return null
         return product;
+    }
+    async mainProducts(): Promise<Product[]> {
+        return products.filter(prod=>prod.active && prod.stored > 0).slice(0, 4);
     }
 }

@@ -4,6 +4,8 @@ import { priceFormatter } from "@/utils/formatter";
 import Link from "next/link";
 
 export function Product({ product }: { product: ProductProps }) {
+    // const isActive = product.stored > 0 && product.active;
+    
     return <div className="group relative">
         <img
             alt={product.name}
