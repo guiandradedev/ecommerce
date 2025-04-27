@@ -8,7 +8,7 @@ export interface SmallBanner {
 }
 
 export interface Product {
-    id: number,
+    id: string,
     name: string,
     description: string,
     stored: number,

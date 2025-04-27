@@ -1,5 +1,4 @@
 import { products } from "@/constants"
-import { Product as ProductProps} from "@/constants/types"
 import { Product } from "./product"
 
 export default function ProductList() {
