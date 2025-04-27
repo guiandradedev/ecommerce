@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 interface CartItem {
     id: string;
@@ -43,6 +43,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         setCart([]);
     };
 
+    useEffect(()=>{console.log(cart)}, [cart])
     return (
         <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
             {children}
