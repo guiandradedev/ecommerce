@@ -28,7 +28,7 @@ export default function ButtonAddToCart({ content, children, isActive, className
 
     return (
         <Button
-            className={twMerge(className, "mt-4 w-full text-white py-3 px-6 rounded-lg text-md font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer")}
+            className={twMerge("mt-4 w-full text-white py-3 px-6 rounded-lg text-md font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer", className)}
             disabled={!isActive}
             onClick={handleAddToCart}
         >

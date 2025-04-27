@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { setCookie, parseCookies, destroyCookie } from "nookies";
+import { cookie_max_age } from "@/constants";
 
 interface CartItem {
     id: string;
@@ -22,7 +23,6 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     const [cart, setCart] = useState<CartItem[]>([]);
-    const cookieMaxAge = 60 * 60 * 24; // 24hs
 
     useEffect(() => {
         const { cart: cartCookie } = parseCookies();
@@ -38,7 +38,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(() => {
         setCookie(null, "cart", JSON.stringify(cart), {
-            maxAge: cookieMaxAge,
+            maxAge: cookie_max_age,
             path: "/", // routes that cookie will be avaiable
             sameSite: "strict", 
         });

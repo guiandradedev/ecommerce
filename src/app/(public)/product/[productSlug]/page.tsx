@@ -1,5 +1,6 @@
 import { ProductAPI } from "@/api/product";
 import ButtonAddToCart from "@/components/product/add-to-cart";
+import ButtonToggleFavorite from "@/components/product/toggle-favorite";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -52,8 +53,10 @@ export default async function Product({ params }: ProductPageProps) {
                                     <p className="mt-4 text-lg font-medium text-red-600">Produto indisponível</p>
                                 )
                             }
-
-                            <ButtonAddToCart content="Adicionar ao carrinho" isActive={isActive} product={product}/>
+                            <div className="flex gap-2">
+                                <ButtonAddToCart content="Adicionar ao carrinho" isActive={isActive} product={product} className="w-75"/>
+                                <ButtonToggleFavorite product={product} className="w-auto"/>
+                            </div>
                         </div>
                     </div>
 

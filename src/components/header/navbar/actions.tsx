@@ -5,15 +5,16 @@ import { navbar_actions } from "../constants";
 import { Badge } from "@/components/ui/badge"
 import { useCart } from "@/contexts/cart-context";
 import { act, useState } from "react";
+import { useFavorite } from "@/contexts/favorite-context";
 
 export default function Actions() {
     const { cart } = useCart()
-    const [favorites, setFavorites] = useState(0)
+    const { favorites } = useFavorite()
 
     const actions = navbar_actions.map((action) => {
         let badgeCount = 0;
         if (action.badge?.key === "cartCount") badgeCount = cart.length;
-        if (action.badge?.key === "favoritesCount") badgeCount = favorites;
+        if (action.badge?.key === "favoritesCount") badgeCount = favorites.length;
 
         return { ...action, badge: { count: badgeCount } };
     });
