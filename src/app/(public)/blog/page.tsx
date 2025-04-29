@@ -1,3 +1,7 @@
+import NotImplemented from "@/components/not-implemented";
+
 export default function Blog() {
-    return <h1>Blog</h1>
+    return (
+        <NotImplemented header={false} />
+    );
 }

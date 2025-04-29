@@ -1,3 +1,7 @@
+import NotImplemented from "@/components/not-implemented";
+
 export default function Categories() {
-    return <h1>Categories</h1>
+    return (
+        <NotImplemented header={false} page="categorias" />
+    );
 }

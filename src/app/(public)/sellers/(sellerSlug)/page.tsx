@@ -1,3 +1,7 @@
+import NotImplemented from "@/components/not-implemented";
+
 export default function SellerPage() {
-    return <h1>Seller</h1>
+    return (
+        <NotImplemented header={false} page="empresa" />
+    );
 }

@@ -1,3 +1,7 @@
+import NotImplemented from "@/components/not-implemented";
+
 export default function Support() {
-    return <h1>Suporte</h1>
+    return (
+        <NotImplemented header={false} page="suporte" />
+    );
 }

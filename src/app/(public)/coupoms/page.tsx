@@ -1,3 +1,7 @@
+import NotImplemented from "@/components/not-implemented";
+
 export default function Coupoms() {
-    return <h1>Cupons</h1>
+    return (
+        <NotImplemented header={false} page="cupons" />
+    );
 }
