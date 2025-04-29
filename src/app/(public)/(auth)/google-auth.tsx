@@ -1,5 +1,6 @@
 "use client";
 
+import { AuthAPI } from "@/api/auth";
 import { GoogleOAuthProvider, GoogleLogin, CredentialResponse } from "@react-oauth/google";
 import axios from "axios";
 
@@ -13,16 +14,19 @@ export default function GoogleAuth() {
         }
 
         try {
-            const response = await axios.post<{ data: {token: {access_token: string, refresh_token: string}} }>("http://localhost:3001/api/auth/social-login", {
-                token: googleToken,
-                provider: "Google"
-            });
+            const auth_api = new AuthAPI();
+            const response = await auth_api.social_login("Google", googleToken);
+            // const response = await axios.post<{ data: {token: {access_token: string, refresh_token: string}} }>("http://localhost:3001/api/auth/social-login", {
+            //     token: googleToken,
+            //     provider: "Google"
+            // });
+            console.log(response.data);
 
-            console.log(response.data.data.token.access_token)
+            // console.log(response.data.data.token.access_token)
 
             // localStorage.setItem("token", response.data.data.access_token);
             // localStorage.setItem("refresh_token", response.data.data.token);
-            console.log("Login bem-sucedido!", response.data);
+            // console.log("Login bem-sucedido!", response.data);
         } catch (error) {
             console.error("Erro ao fazer login:", error);
         }

@@ -1,8 +1,14 @@
 import { Product, SmallBanner } from "./types"
-import { v4 } from 'uuid'
 
 export const base = {
-    company_name: "E-Commerce"
+    company_name: "E-Commerce",
+    company_description: "A melhor loja de produtos eletrônicos",
+    company_url: "https://ecommerce.com",
+    // company_email: 
+}
+
+export const api = {
+    base_url: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001/api",
 }
 
 export const local_storage_key = "@ecommerce/"
