@@ -1,20 +1,17 @@
-import Footer from "@/components/public/footer";
+import PrivateHeader from "@/components/private/header";
 import Header from "@/components/public/header";
-import SmallBanner from "@/components/small-banner";
 
-export default function RootLayout({
+export default function PrivateLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <main>
-      <SmallBanner />
-      <Header />
       <div className="container mx-auto px-4">
+        <PrivateHeader />
         {children}
       </div>
-      <Footer />
     </main>
   );
 }

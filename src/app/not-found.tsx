@@ -1,6 +1,6 @@
 "use client"
 
-import Header from "@/components/header";
+import Header from "@/components/public/header";
 import Link from "next/link";
 
 export default function NotFound() {

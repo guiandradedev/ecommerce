@@ -1,7 +1,7 @@
 import { Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react"
 import { XMarkIcon, ChevronDownIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
-import Logo from "../../logo"
+import Logo from "../../../logo"
 import { navbar_links } from "../constants"
 import Actions from "./actions"
 

@@ -11,7 +11,6 @@ export default function Navbar() {
     <div>
       <DesktopNavbar setMobileMenuOpen={setMobileMenuOpen}/>
       <MobileNavbar mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen}/>
-      
     </div>
   )
 }
