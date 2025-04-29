@@ -1,16 +1,25 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useCart } from "@/contexts/cart-context";
 import Link from "next/link";
 
 export default function Cart() {
-    const { cart, removeFromCart, clearCart } = useCart();
+    const { cart, removeFromCart, clearCart, changeQuantity } = useCart();
 
     const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
     const shippingEstimate = 5.0;
     const taxEstimate = subtotal * 0.1;
     const total = subtotal + shippingEstimate + taxEstimate;
+
+    function handleChangeQuantity(value: number, id: string) {
+        if (isNaN(value) || value < 1) {
+            removeFromCart(id);
+            return;
+        }
+        changeQuantity(id, value);
+    }
 
     return (
         <div className="bg-gray-50 rounded shadow py-12 sm:py-16 mb-12">
@@ -35,6 +44,7 @@ export default function Cart() {
                                                 <p className="ml-4">R$ {item.price.toFixed(2)}</p>
                                             </div>
                                             <div>
+                                                <Input value={item.quantity} className="w-auto" type="number" onChange={(event)=>handleChangeQuantity(parseInt(event.target.value, 10), item.id)}/>
                                                 <p className="mt-1 text-sm text-gray-500">Quantidade: {item.quantity}</p>
                                             </div>
                                         </div>

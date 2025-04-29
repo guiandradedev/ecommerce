@@ -11,7 +11,8 @@ interface BaseButtonProps {
 }
 
 export default function ButtonToggleFavorite({ className, product }: BaseButtonProps) {
-    const { toggleFavorite, isInFavorites } = useFavorite();
+    const { toggleFavorite, isInFavorites, favorites } = useFavorite();
+    console.log(isInFavorites(product.id), favorites);
 
     const handleToggleFavorite = () => {
         toggleFavorite({ id: product.id, name: product.name, price: product.price, thumbnail: product.thumbnail });

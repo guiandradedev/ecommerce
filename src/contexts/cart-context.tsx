@@ -17,6 +17,9 @@ interface CartContextType {
     addToCart: (item: CartItem) => void;
     removeFromCart: (id: string) => void;
     clearCart: () => void;
+    incrementQuantity: (id: string) => void;
+    decrementQuantity: (id: string) => void;
+    changeQuantity: (id: string, quantity: number) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -67,8 +70,40 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         destroyCookie(null, "cart");
     };
 
+    const incrementQuantity = (id: string) => {
+        setCart((prevCart) =>
+            prevCart.map((item) =>
+                item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+            )
+        );
+    };
+    const decrementQuantity = (id: string) => {
+        setCart((prevCart) =>
+            prevCart.flatMap((item) =>
+                item.id === id
+                    ? item.quantity > 1
+                        ? { ...item, quantity: item.quantity - 1 }
+                        : []
+                    : item
+            )
+        );
+    };
+    const changeQuantity = (id: string, quantity: number) => {
+        if(quantity < 1) {
+            removeFromCart(id);
+            return;
+        }
+        setCart((prevCart) =>
+            prevCart.map((item) =>
+                item.id === id
+                    ? { ...item, quantity: Math.max(1, quantity) }
+                    : item
+            )
+        );
+    };
+
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
+        <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, incrementQuantity, decrementQuantity, changeQuantity }}>
             {children}
         </CartContext.Provider>
     );
