@@ -15,7 +15,7 @@ export default function ButtonToggleFavorite({ className, product }: BaseButtonP
     console.log(isInFavorites(product.id), favorites);
 
     const handleToggleFavorite = () => {
-        toggleFavorite({ id: product.id, name: product.name, price: product.price, thumbnail: product.thumbnail });
+        toggleFavorite({ id: product.id, name: product.name, price: product.price, thumbnail: product.thumbnail, product });
     };
 
     return (

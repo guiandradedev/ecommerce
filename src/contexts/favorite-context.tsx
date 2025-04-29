@@ -3,12 +3,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { setCookie, parseCookies, destroyCookie } from "nookies";
 import { cookie_max_age } from "@/constants";
+import { Product } from "@/constants/types";
 
 interface FavoriteItem {
     id: string;
     name: string;
     price: number;
     thumbnail: string;
+    product?: Product
 }
 
 interface FavoriteContextType {
