@@ -12,7 +12,9 @@ export const api = {
 }
 
 export const local_storage_key = "@ecommerce/"
+export const cookies_key = "@ecommerce/"
 export const cookie_max_age = 60 * 60 * 24 // 24hs
+export const auth_max_age = 60 * 60 * 24 // 24hs
 
 export const small_banner: SmallBanner = {
     title: "Super Promoção",
